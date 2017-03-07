@@ -242,6 +242,7 @@ try
 
         std::ofstream master((bdir / "include" / m / m).string());
         master << "#pragma once" << "\n";
+        master << "#include <" << m << "/" << m << "Depends>" << "\n";
 
         for (auto &ff : mm.second)
         {
@@ -296,6 +297,8 @@ try
             oheader /= fn;
             write_file(oheader, "#include \"" + normalize_path(fs::relative(p, oheader.parent_path())) + "\"\n");
         }
+
+        master << "#include \"" << boost::to_lower_copy(m) + "version.h\"" << "\n";
 
         int ma, mi, pa;
         sscanf(&version[0], "%d.%d.%d", &ma, &mi, &pa);
