@@ -188,7 +188,7 @@ try
     desc.add_options()
         ("sdir,s", po::value<String>()->required(), "sdir")
         ("bdir,b", po::value<String>(), "bdir")
-        ("modules,m", po::value<Strings>(), "bdir")
+        ("modules,m", po::value<Strings>()->multitoken(), "bdir")
         ("version,v", po::value<String>()->required(), "version")
         ;
 
@@ -295,7 +295,15 @@ try
             else
                 oheader /= path(version) / m / "private";
             oheader /= fn;
-            write_file(oheader, "#include \"" + normalize_path(fs::relative(p, oheader.parent_path())) + "\"\n");
+
+            // BUG: boost cannot compare d:\... == D:\...
+            // https://svn.boost.org/trac/boost/ticket/12743
+
+            // create dirs for fs::absolute()
+            fs::create_directories(oheader.parent_path());
+            auto p1 = fs::absolute(p).string();
+            auto p2 = fs::absolute(oheader.parent_path()).string();
+            write_file(oheader, "#include \"" + normalize_path(fs::relative(boost::to_lower_copy(p1), boost::to_lower_copy(p2))) + "\"\n");
         }
 
         master << "#include \"" << boost::to_lower_copy(m) + "version.h\"" << "\n";

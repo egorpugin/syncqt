@@ -4,3 +4,4 @@ c++: 14
 dependencies:
     pvt.egorpugin.primitives.filesystem: master
     pvt.cppan.demo.boost.program_options: 1
+    pvt.cppan.demo.boost.algorithm: 1
