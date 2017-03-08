@@ -295,15 +295,7 @@ try
             else
                 oheader /= path(version) / m / "private";
             oheader /= fn;
-
-            // BUG: boost cannot compare d:\... == D:\...
-            // https://svn.boost.org/trac/boost/ticket/12743
-
-            // create dirs for fs::absolute()
-            fs::create_directories(oheader.parent_path());
-            auto p1 = fs::absolute(p).string();
-            auto p2 = fs::absolute(oheader.parent_path()).string();
-            write_file(oheader, "#include \"" + normalize_path(fs::relative(boost::to_lower_copy(p1), boost::to_lower_copy(p2))) + "\"\n");
+            write_file(oheader, "#include \"" + normalize_path(p) + "\"\n");
         }
 
         master << "#include \"" << boost::to_lower_copy(m) + "version.h\"" << "\n";
