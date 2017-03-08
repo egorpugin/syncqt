@@ -128,7 +128,7 @@ std::regex r_private_header("_p(ch)?\\.h$");
 std::vector<std::regex> r_qpa_headers;
 std::regex r_qt_class("^#pragma qt_class\\(([^)]*)\\)[\r\n]*$");
 std::regex r_class(R"((class|struct)\s+(\w+\s+)?(Q[0-9a-zA-Z]+))");
-std::regex r_typedef(R"(typedef.*\W(Q\w+);$)");
+std::regex r_typedef(R"(typedef.*\W(Q\w+);)");
 std::regex r_require(R"xx(^QT_REQUIRE_CONFIG\((.*)\);[\r\n]*$)xx");
 
 std::map<String, std::map<path, File>> modules;
