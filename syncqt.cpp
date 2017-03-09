@@ -301,7 +301,11 @@ try
             else
                 oheader /= path(version) / m / "private";
             oheader /= fn;
-            write_file(oheader, "#include \"" + normalize_path(p) + "\"\n");
+            // if we're on the other disk or whatever else, use abs path
+            auto rel = fs::relative(p, oheader.parent_path());
+            if (rel.empty())
+                rel = p;
+            write_file(oheader, "#include \"" + normalize_path(rel) + "\"\n");
         }
 
         master << "#include \"" << boost::to_lower_copy(m) + "version.h\"" << "\n";
