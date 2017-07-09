@@ -52,6 +52,9 @@ const std::map<String, path> module_dirs {
     //"QtZlib", "!>src/corelib;src/3rdparty/zlib",
     //"QtOpenGLExtensions", "src/openglextensions",
     //"QtEglFSDeviceIntegration", "src/plugins/platforms/eglfs",
+    
+    // svg
+    { "QtSvg", "src/svg" },
 };
 
 const StringMap moduleheaders {
