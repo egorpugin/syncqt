@@ -67,11 +67,10 @@ const std::map<String, path> module_dirs {
     {"Qt3DExtras" , "src/extras"},
     {"Qt3DQuickExtras" , "src/quick3d/quick3dextras"},
     {"Qt3DQuickScene2D" , "src/quick3d/quick3dscene2d"},
-    {"ActiveQt" , "src/activeqt"
+    {"ActiveQt" , "src/activeqt"},
     {"QtAndroidExtras" , "src/androidextras"},
     {"QtCanvas3D" , "src"},
     {"QtCharts" , "src/charts"},
-    {"qchartglobal.h" , "QChartGlobal"
     {"QtBluetooth" , "src/bluetooth"},
     {"QtNfc" , "src/nfc"},
     {"QtDataVisualization" , "src/datavisualization"},
@@ -102,7 +101,7 @@ const std::map<String, path> module_dirs {
     {"QtSerialBus" , "src/serialbus"},
     {"QtSerialPort" , "src/serialport"},
     {"QtSvg", "src/svg"},
-    {"QtTextToSpeech" , "src/tts"
+    {"QtTextToSpeech" , "src/tts"},
     {"QtHelp" , "src/assistant/help"},
     {"QtUiTools" , "src/designer/src/uitools"},
     {"QtUiPlugin" , "src/designer/src/uiplugin"},
@@ -144,6 +143,13 @@ const std::map<String, StringSet> classnames {
    { "qtconcurrentmap.h", {"QtConcurrentMap"} },
    { "qtconcurrentfilter.h", {"QtConcurrentFilter"} },
    { "qtconcurrentrun.h", {"QtConcurrentRun"} },
+        
+    {"qchartglobal.h" , {"QChartGlobal"}    },
+    {"qaudio.h" , {"QAudio"}},
+    {"qmediametadata.h" , {"QMediaMetaData"}},
+    {"qmultimedia.h" , {"QMultimedia" }   },
+    {"qwaylandquickextension.h" , {"QWaylandQuickExtension"}},
+    {"qwebsocketprotocol.h" , {"QWebSocketProtocol"}},
 };
 
 const std::map<String, StringMap> deprecatedheaders {
