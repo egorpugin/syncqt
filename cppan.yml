@@ -1,5 +1,5 @@
 
-c++: 14
+c++: 17
 
 dependencies:
     pvt.egorpugin.primitives.filesystem: master
