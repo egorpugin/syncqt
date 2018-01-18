@@ -376,7 +376,9 @@ try
             oheader /= fn;
             // if we're on the other disk or whatever else, use abs path
             auto rel = fs::relative(p, oheader.parent_path());
-            if (rel.empty())
+            // sometimes rel is incorrect (5.10.0/QtEventDispatcherSupport/private/qwindowsguieventdispatcher_p.h),
+            // set abs for the moment
+            //if (rel.empty())
                 rel = p;
             write_file(oheader, "#include \"" + normalize_path(rel) + "\"\n");
         }
