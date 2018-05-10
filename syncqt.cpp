@@ -2,6 +2,7 @@
 #include <boost/program_options.hpp>
 #include <primitives/filesystem.h>
 
+#include <fstream>
 #include <iostream>
 #include <regex>
 
@@ -53,7 +54,7 @@ const std::map<String, path> module_dirs {
     //"QtZlib", "!>src/corelib;src/3rdparty/zlib",
     //"QtOpenGLExtensions", "src/openglextensions",
     //"QtEglFSDeviceIntegration", "src/plugins/platforms/eglfs",
-    
+
     // other
     {"Qt3DCore" , "src/core"},
     {"Qt3DRender" , "src/render"},
@@ -143,7 +144,7 @@ const std::map<String, StringSet> classnames {
    { "qtconcurrentmap.h", {"QtConcurrentMap"} },
    { "qtconcurrentfilter.h", {"QtConcurrentFilter"} },
    { "qtconcurrentrun.h", {"QtConcurrentRun"} },
-        
+
     {"qchartglobal.h" , {"QChartGlobal"}    },
     {"qaudio.h" , {"QAudio"}},
     {"qmediametadata.h" , {"QMediaMetaData"}},
@@ -313,7 +314,7 @@ try
     {
         auto m = mm.first;
 
-        std::ofstream master((bdir / "include" / m / m).string());
+        std::ofstream master(bdir / "include" / m / m);
         master << "#pragma once" << "\n";
         master << "#include <" << m << "/" << m << "Depends>" << "\n";
 
@@ -390,14 +391,14 @@ try
         char x[10];
         sprintf(x, "0x%02d%02d%02d", ma, mi, pa);
 
-        std::ofstream v((bdir / "include" / m / (boost::to_lower_copy(m) + "version.h")).string());
+        std::ofstream v(bdir / "include" / m / (boost::to_lower_copy(m) + "version.h"));
         v << "#pragma once" << "\n";
         v << "\n";
         v << "#define " << boost::to_upper_copy(m) + "_VERSION_STR \"" << version << "\"\n";
         v << "\n";
         v << "#define " << boost::to_upper_copy(m) + "_VERSION " << x << "\n";
 
-        std::ofstream v2((bdir / "include" / m / (m + "Version")).string());
+        std::ofstream v2(bdir / "include" / m / (m + "Version"));
         v2 << "#include \"" << boost::to_lower_copy(m) + "version.h" <<  "\"\n";
     }
 
