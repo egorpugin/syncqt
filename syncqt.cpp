@@ -53,6 +53,7 @@ const std::map<String, path> module_dirs {
     { "QtDBus", "src/dbus" },
     { "QtConcurrent", "src/concurrent" },
     { "QtAccessibilitySupport", "src/platformsupport/accessibility" },
+    { "QtWindowsUIAutomationSupport", "src/platformsupport/windowsuiautomation" },
     { "QtLinuxAccessibilitySupport", "src/platformsupport/linuxaccessibility" },
     { "QtClipboardSupport", "src/platformsupport/clipboard" },
     { "QtDeviceDiscoverySupport", "src/platformsupport/devicediscovery" },
